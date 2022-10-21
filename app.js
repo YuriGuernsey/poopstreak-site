@@ -16,7 +16,6 @@ save.addEventListener("click", async (e) => {
         post: post
     })
     if (res) {
-        alert("Student Add Successfully")
         save.innerText = "Save"
         save.setAttribute("disabled", false);
         title = "";
@@ -27,7 +26,6 @@ save.addEventListener("click", async (e) => {
 
 
     } else {
-        alert("Post Not Add Successfully")
         save.innerText = "Save"
         save.setAttribute("disabled", false);
     }
