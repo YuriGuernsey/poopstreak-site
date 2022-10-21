@@ -42,8 +42,8 @@ const getPosts = async () => {
     if (res) {
         for (var i in res.data) {
             document.querySelector('#posts').append("<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + res.data[i].title+ "</h5><p class=\"card-text\">" + res.data[i].post + "</p></div></div>");
-        loading.innerText = ""
-
+        loading.innerText = "";
+        }
     }
 
 }
