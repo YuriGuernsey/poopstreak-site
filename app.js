@@ -1,6 +1,6 @@
-const key = "";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzdWpxaHVmYXV0amZuZ2Fta29wIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjUwNDcwMTQsImV4cCI6MTk4MDYyMzAxNH0.B1XSbe_I3s3wq5L3kjoxmd1wgA7aV2VaKal5I67QT14";
 
-const url = "";
+const url = "https://jsujqhufautjfngamkop.supabase.co";
 
 const database = supabase.createClient(url, key);
 
@@ -35,32 +35,20 @@ save.addEventListener("click", async (e) => {
     }
 })
 
-const getStudent = async () => {
-    let tbody = document.getElementById("tbody");
-    let loading = document.getElementById("loading");
-    let tr = "";
+const getPosts = async () => {
+  
     loading.innerText = "Loadding...."
-    const res = await database.from("students").select("*");
+    const res = await database.from("posts").select("*");
     if (res) {
         for (var i in res.data) {
-            tr += `<tr>
-         <td>${parseInt(i) + 1}</td>
-         <td>${res.data[i].name}</td>
-         <td>${res.data[i].age}</td>
-         <td>${res.data[i].country}</td>
-         <td><button class="btn btn-primary" data-bs-toggle="modal"
-         onclick='editStudent(${res.data[i].id})' data-bs-target="#editModel">Edit</button></td>
-         <td><button onclick='deleteStudent(${res.data[i].id})' class="btn btn-danger">Delete</button></td>
-         </tr>`;
-        }
-        tbody.innerHTML = tr;
+            document.querySelector('#posts').append("<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + res.data[i].title+ "</h5><p class=\"card-text\">" + res.data[i].post + "</p></div></div>");
         loading.innerText = ""
 
     }
 
 }
 
-getStudent();
+getPosts();
 
 const getTotalCount = async () => {
     let total = document.querySelector("#total");
