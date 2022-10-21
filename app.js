@@ -20,7 +20,7 @@ save.addEventListener("click", async (e) => {
         save.setAttribute("disabled", false);
        
        
-        document.querySelector('#posts').insertAdjacentHTML('beforebegin',"<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + title + "</h5><p class=\"card-text\">" + post + "</p></div></div>");
+        document.querySelector('#posts').insertAdjacentHTML('afterbegin',"<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + title + "</h5><p class=\"card-text\">" + post + "</p></div></div>");
          title = "";
         post = "";
        
@@ -38,7 +38,7 @@ const getPosts = async () => {
     const res = await database.from("posts").select("*").order('created_at', { ascending: false });
     if (res) {
         for (var i in res.data) {
-            document.querySelector('#posts').insertAdjacentHTML('beforebegin',"<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + res.data[i].title+ "</h5><p class=\"card-text\">" + res.data[i].post + "</p></div></div>");
+            document.querySelector('#posts').insertAdjacentHTML('afterbegin',"<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + res.data[i].title+ "</h5><p class=\"card-text\">" + res.data[i].post + "</p></div></div>");
         loading.innerText = "";
         }
     }
