@@ -18,10 +18,11 @@ save.addEventListener("click", async (e) => {
     if (res) {
         save.innerText = "Save"
         save.setAttribute("disabled", false);
-        title = "";
-        post = "";
        
-        getPosts();
+       
+        document.querySelector('#posts').insertAdjacentHTML('beforeend',"<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + title + "</h5><p class=\"card-text\">" + post + "</p></div></div>");
+         title = "";
+        post = "";
        
 
 
